@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="container" style="display: flex; gap: 20px;">
+      <div class="js-container"></div>
+      <div class="js-container-2"></div>
+      <div class="js-container-time"></div>
+    </div>
+    <!-- React and ReactDOM -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <!-- Babel -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script type="text/babel">
+      // container is a DOM element where we want to render our React code and
+      // ReactDOM is a library that helps us to render React code into the DOM element
+      const button = <button>Good Job!</button>;
+      const name = "Lalith";
+      const paragraph = <p>My Name is {name}</p>;
+      const container = document.querySelector(".js-container");
+      //   Using ReactDOM to render a simple text into the container
+      ReactDOM.createRoot(container).render(
+        <>
+          <h1>Welcome to SuperSimpleDev React Course</h1>
+          {paragraph}
+          {button}
+        </>
+      );
+      const container2 = document.querySelector(".js-container-2");
+
+      const cart = [{ id: 1, name: "Cotton Socks", price: 10 , quantity: 1}, { id: 2, name: "T-Shirt", price: 8, quantity: 2  }];
+      let productCost = 0;
+      cart.forEach(element => {
+        productCost += element.price * element.quantity;
+      });
+
+      console.log(productCost);
+      const shippingCost = 5;
+      const totalCost = productCost + shippingCost;
+      const button2 = <button>Place your order</button>;
+      const date = dayjs().format('MMMM D, YYYY');
+      console.log(date);
+
+      const root = ReactDOM.createRoot(container2);
+
+      root.render(
+        <>
+          <h2>Order Summary</h2>
+          <p>Items in cart: {cart.length}</p>
+          <ul style={{ listStyleType: "none", padding: 0 }}>
+            {cart.map((item) => (
+              <li key={item.id}>
+                {item.name} - ${item.price} x {item.quantity}
+              </li>
+            ))}
+          </ul>
+          <hr />
+          <p>Product Cost: ${productCost}</p>
+          <p>Shipping Cost: ${shippingCost}</p>
+          <hr />
+          <h3>Total Cost: ${totalCost}</h3>
+          {button2}
+          <p style={{ fontSize: "12px", color: "gray" }}>Date: {date}</p>
+        </>
+      );
+
+      const containerTime = document.querySelector(".js-container-time");
+      const rootTime = ReactDOM.createRoot(containerTime);
+      setInterval(() => {
+
+        let time = dayjs().format('h:mm:ss A');
+        console.log(time);
+
+            rootTime.render(
+              <>
+                <p style={{ fontSize: "12px", color: "gray" }}>Time: {time}</p>
+              </>
+            );
+      }, 1000);
+    </script>
+  </body>
+</html>
+
+</html>

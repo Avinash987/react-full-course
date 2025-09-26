@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lesson 2: Cart</title>
+  </head>
+  <body>
+    <div class="js-container"> </div>
+
+    <!-- React and ReactDOM -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <!-- Babel -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <!-- <script src="https://unpkg.com/supersimpledev/dayjs.js"></script> -->
+    <script type="text/babel">
+
+      const container = document.querySelector(".js-container");
+      //   Using ReactDOM to render a simple text into the container
+
+      function Product({name, price, path, discountPrice=null}){
+
+        return ( 
+            <div>
+                <p>{name}</p>
+                <img src={path}  width ="80"/>
+                {discountPrice 
+                    ? <del><p>Price: ${price}</p></del> 
+                    : <p>Price: ${price}</p>}
+                {discountPrice && <p>Discount Price: ${discountPrice}</p>}
+                <button>Add to Cart</button>
+            </div>
+        );
+      }
+
+      function App(props){
+        return (
+            <>
+                <Product name="Cotton Socks" price="10.90" path="./cotton-socks.png" discountPrice="5.45"/>
+                <Product name="Tennis balls" price="6.00" path ="./tennis-balls.png"/>
+                <Product name="Plain T-Shirt" price="7.99" path ="./plain-t-shirt.png"/>
+            </>
+            );
+      }
+      ReactDOM.createRoot(container).render(App());
+    </script>
+  </body>
+</html>
+
+</html>

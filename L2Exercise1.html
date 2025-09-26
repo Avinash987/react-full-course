@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lesson 2: Exercises</title>
+  </head>
+  <body>
+    <div class="js-container"> </div>
+
+    <!-- React and ReactDOM -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <!-- Babel -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <!-- <script src="https://unpkg.com/supersimpledev/dayjs.js"></script> -->
+    <script type="text/babel">
+
+      const container = document.querySelector(".js-container");
+      //   Using ReactDOM to render a simple text into the container
+
+      function LoginForm(props){
+        return (
+            <>
+                <input placeholder="Email"></input><br/>
+                <input placeholder="Password" type="password"></input><br/>
+                <button>Login</button>
+                <button>Sign Up</button>
+            </>
+        );
+      }
+
+      function App(props){
+        return (
+            <>
+                <p>Hello, Welcome to my website</p>
+                <LoginForm/>
+            </>
+            );
+      }
+      ReactDOM.createRoot(container).render(App());
+    </script>
+  </body>
+</html>
+
+</html>
